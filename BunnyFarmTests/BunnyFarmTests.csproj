@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -52,12 +55,16 @@
   <ItemGroup>
     <Compile Include="BunnyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BunnyFarmTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BunnyFarm\BunnyFarm.csproj">
       <Project>{4188eabd-30ef-4069-9ee1-8ce462c2b562}</Project>
       <Name>BunnyFarm</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
