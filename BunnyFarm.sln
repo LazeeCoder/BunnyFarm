@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BunnyFarm", "BunnyFarm\Bunn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BunnyFarmTests", "BunnyFarmTests\BunnyFarmTests.csproj", "{9A4BE8E5-61BA-46C7-AE09-E7579F57290C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BunnyFarmConsole", "BunnyFarmConsole\BunnyFarmConsole.csproj", "{3E105237-A9DB-430E-ADFA-C0927AAB2385}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{9A4BE8E5-61BA-46C7-AE09-E7579F57290C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A4BE8E5-61BA-46C7-AE09-E7579F57290C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A4BE8E5-61BA-46C7-AE09-E7579F57290C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E105237-A9DB-430E-ADFA-C0927AAB2385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E105237-A9DB-430E-ADFA-C0927AAB2385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E105237-A9DB-430E-ADFA-C0927AAB2385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E105237-A9DB-430E-ADFA-C0927AAB2385}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

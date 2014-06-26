@@ -16,6 +16,7 @@ namespace BunnyFarm
         {
 
         }
+
         public Farm(List<IBunny> bunnies)
         {
             Bunnies = bunnies;
@@ -33,14 +34,20 @@ namespace BunnyFarm
 
         private void ReproduceBunnies()
         {
-            if (Bunnies.Count(b => b.Age > LEGAL_BREADING_AGE && b.Sex == BunnySex.MALE) > 0)
+            if (Bunnies.Count(b => b.Age > LEGAL_BREADING_AGE && b.Sex == BunnySex.MALE  && !b.IsRadioActive) > 0)
             {
-                foreach (IBunny bunny in Bunnies.Where(b => b.Sex == BunnySex.FEMALE && b.Age > LEGAL_BREADING_AGE).ToList<IBunny>())
+                foreach (IBunny bunny in Bunnies.Where(b => b.Sex == BunnySex.FEMALE 
+                            && b.Age > LEGAL_BREADING_AGE && !b.IsRadioActive).ToList<IBunny>())
                 {
-                    Bunnies.Add(bunny.CreateBunny(Bunnies.Single(b => b.Age > 1 && b.Sex == BunnySex.MALE)));
+                    Bunnies.Add(bunny.CreateBunny(Bunnies.First(b => b.Age > 1 && b.Sex == BunnySex.MALE)));
                 }
             }
 
+        }
+
+        public void RemoveDeceasedBunnies()
+        {
+            Bunnies.RemoveAll(b => b.State == BunnyState.DECEASED);
         }
     }
 }

@@ -29,10 +29,13 @@ namespace BunnyFarm
 
     public class Bunny : IBunny
     {
+        #region Constants/Privates/Properties
+
         private const int MINIMUM_START_AGE = 0;
         private const int MAXIMUM_START_AGE = 10;
         private const int RADIO_ACTIVE_TRAIT = 0;
         private const int LEGAL_BREADING_AGE = 1;
+        private static Random random = new Random(DateTime.Now.Millisecond);
 
 
         private string[] FIRST_NAMES = { "Thumper", "Jumper", "Ragnaros", "Reginald", "LeeRoy", "Peter" };
@@ -50,6 +53,10 @@ namespace BunnyFarm
 
         public BunnyState State { get; set; }
 
+        #endregion
+
+        #region Constructors
+
         public Bunny()
         {
             Name = GetBunnyName();
@@ -59,6 +66,33 @@ namespace BunnyFarm
             IsRadioActive = HasRadioActiveTrait();
             State = BunnyState.MATURE;
         }
+
+        #endregion
+
+        #region Public Methods
+
+        public void AgeOneYear()
+        {
+            AgeBunny();
+            KillOldBunnies();
+        }
+
+        public Bunny CreateBunny(IBunny daddyBunny)
+        {
+            if (this.Sex == BunnySex.FEMALE && this.Age > LEGAL_BREADING_AGE && !this.IsRadioActive
+                && daddyBunny.Sex == BunnySex.MALE && daddyBunny.Age > LEGAL_BREADING_AGE && !daddyBunny.IsRadioActive)
+            {
+                return new Bunny { Age = 0, Color = this.Color, Sex = GetBunnySex(), Name = GetBunnyName(), State = BunnyState.NEWBORN };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
 
         private string GetBunnyName()
         {
@@ -78,15 +112,9 @@ namespace BunnyFarm
 
         private int GetRandom(int minValue, int maxValue)
         {
-            Random random = new Random(DateTime.Now.Millisecond);
+            //Random random = new Random(DateTime.Now.Millisecond);
 
             return random.Next(minValue, maxValue);
-        }
-
-        public void AgeOneYear()
-        {
-            AgeBunny();
-            KillOldBunnies();
         }
 
         private void AgeBunny()
@@ -113,17 +141,12 @@ namespace BunnyFarm
             return Age > 10 && !IsRadioActive;
         }
 
-        public Bunny CreateBunny(IBunny daddyBunny)
+        #endregion
+
+        public override string ToString()
         {
-            if (this.Sex == BunnySex.FEMALE && this.Age > LEGAL_BREADING_AGE
-                && daddyBunny.Sex == BunnySex.MALE && daddyBunny.Age > LEGAL_BREADING_AGE)
-            {
-                return new Bunny { Age = 0, Color = this.Color, Sex = GetBunnySex(), Name = GetBunnyName(), State = BunnyState.NEWBORN };
-            }
-            else
-            {
-                return null;
-            }
+            return Name + " Age: " + Age.ToString() +
+                " Color: " + Color.ToString() + " Sex: " + Sex.ToString();
         }
     }
 }

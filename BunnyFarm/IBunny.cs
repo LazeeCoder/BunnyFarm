@@ -17,6 +17,8 @@ namespace BunnyFarm
 
         bool IsRadioActive { get; set; }
 
+        BunnyState State { get; set; }
+
         void AgeOneYear();
 
         Bunny CreateBunny(IBunny daddyBunny);

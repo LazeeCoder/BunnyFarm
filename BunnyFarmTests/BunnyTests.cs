@@ -132,7 +132,39 @@ namespace BunnyFarmTests
             Assert.AreEqual(BunnyState.NEWBORN, babyBunny.State);
         }
 
+        [TestMethod]
+        public void RadioActiveBunniesDoNotReproduce()
+        {
+            Bunny female = CreateFemale();
+            Bunny radioActive = CreateRadioActiveBunny(2);
+
+            radioActive.Sex = BunnySex.MALE;
+
+            Bunny noBaby = female.CreateBunny(radioActive);
+
+            Assert.IsNull(noBaby);
+        }
+
+        [TestMethod]
+        public void FemaleRadioActiveBunniesDoNotReproduce()
+        {
+            Bunny radioActiveFemale = CreateFemale();
+            radioActiveFemale.IsRadioActive = true;
+
+            Bunny noBabyBunny = radioActiveFemale.CreateBunny(CreateMale());
+
+            Assert.IsNull(noBabyBunny);
+        }
+
         #endregion
+
+        [TestMethod]
+        public void MyBunnysToStringMethodReturnsData()
+        {
+            Assert.AreEqual(myFirstBunny.Name + " Age: " + myFirstBunny.Age.ToString()
+                        + " Color: " + myFirstBunny.Color.ToString() + " Sex: " + myFirstBunny.Sex.ToString(),
+                        myFirstBunny.ToString());
+        }
 
         #region Private Methods
 

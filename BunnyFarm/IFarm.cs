@@ -10,5 +10,6 @@ namespace BunnyFarm
     {
         List<IBunny> Bunnies { get; set; }
         void AgeBunnies();
+        void RemoveDeceasedBunnies();
     }
 }
